@@ -6,15 +6,14 @@ const JWT_EXPIRES_IN = '24h'
 
 //Helper to generate JWT token
 const generateToken = (id) => {
-    return jwt.sign({ id }), JWT_SECRET, {
+    return jwt.sign({ id }, JWT_SECRET, {
         expiresIn: JWT_EXPIRES_IN
-    }
+    })
 }
 
 const register = async (req, res) => {
     try{
         const { name, email, password } = req.body
-
         if(!name || !email || !password){
             return res.status(400).json({message: 'Please, provide a name, an email and a password'})
         }
@@ -46,8 +45,12 @@ const register = async (req, res) => {
         })
 
     } catch (err) {
-        res.status(500).json({message: 'Server error during registration'})
+        res.status(500).json({message: err.message})
     }
+}
+
+const login = async (req, res) => {
+    
 }
 
 module.exports = { register }

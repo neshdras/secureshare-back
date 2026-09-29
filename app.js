@@ -35,9 +35,14 @@ app.use(express.json())
 //Import des routes
 const authRoutes = require('./routes/authRoutes')
 
-app.use('/api/vi/auth', authRoutes)
 
 // Routeur
+app.use('/api/v1/auth', authRoutes)
+
+
+app.get('/', (req, res) => {
+    res.send('Bienvenue sur SecureShare !')
+})
 
 app.listen(port, () => {
     console.log(`Serveur démaré sur http://localhost:${port}`)
