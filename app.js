@@ -21,7 +21,7 @@ const corsOption = {
 app.use(cors(corsOption))
 
 const limiter = ratelimit({
-    windowsMs: 15 * 60 * 1000,
+    windowMs: 15 * 60 * 1000,
     limit: 100,
     message: {status: 429, error: 'Too many requests; please try again later.'}
 })
@@ -33,9 +33,9 @@ app.use(limiter)
 app.use(express.json())
 
 //Import des routes
-// const authRoutes = require('./routes/authRoutes')
+const authRoutes = require('./routes/authRoutes')
 
-// app.use('/api/vi/auth', authRoutes)
+app.use('/api/vi/auth', authRoutes)
 
 // Routeur
 

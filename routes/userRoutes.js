@@ -1,3 +1,3 @@
 const express = require('express')
 const router = express.Router()
-const { profile } = require('../controllers/userController')
+const { profile } = require('../controllers/authController')
